@@ -27,7 +27,7 @@
   },
   "build": {
     "appId": "com.everyscore.app",
-    "productName": "EveryScore",
+    "productName": "에브리스코어",
     "directories": {
       "output": "release"
     },
@@ -35,7 +35,8 @@
     "compression": "maximum",
     "win": {
       "target": "nsis",
-      "signAndEditExecutable": false
+      "signAndEditExecutable": false,
+      "icon": "build/icon.ico"
     },
     "nsis": {
       "oneClick": false,

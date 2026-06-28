@@ -16,6 +16,7 @@ function createWindow() {
       contextIsolation: true,
       nodeIntegration: false,
     },
+    icon: path.join(__dirname, '..', 'build', 'icon.ico'),
     titleBarStyle: 'default',
     show: false,
   })

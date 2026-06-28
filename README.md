@@ -1,7 +1,13 @@
-# 에브리스코어 (EveryScore)
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="image/banner_dark.png" />
+    <source media="(prefers-color-scheme: light)" srcset="image/banner_white.png" />
+    <img alt="에브리스코어" src="image/banner_white.png" width="480" />
+  </picture>
+</p>
 
-교실에서 사용하는 학생 점수 관리 데스크톱 앱입니다.<br>
-교사가 자신의 PC에 설치하여 로컬에서 사용하며, 모든 데이터는 로컬에 저장됩니다.
+<p align="center">교실에서 사용하는 학생 점수 관리 데스크톱 앱입니다.<br>
+교사가 자신의 PC에 설치하여 로컬에서 사용하며, 모든 데이터는 로컬에 저장됩니다.</p>
 
 ## 주요 기능
 
@@ -12,6 +18,9 @@
 - **전체화면 모드** — TV 화면 송출용, ESC로 해제
 - **반응형 카드** — 창 크기·전체화면에 따라 카드와 글자 크기 자동 조절
 
+<p align="center">
+  <img src="image/screenshot.png" alt="스크린샷" width="720" />
+</p>
 
 ## 설치 및 실행
 
