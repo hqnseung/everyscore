@@ -3,6 +3,7 @@ import useStore from '../stores/useStore'
 import ClassManager from './ClassManager'
 import StudentManager from './StudentManager'
 import SettingsModal from './SettingsModal'
+import bannerImg from '/image/banner_white.png'
 
 export default function Sidebar() {
   const classes = useStore((s) => s.classes)
@@ -17,7 +18,7 @@ export default function Sidebar() {
     <>
       <aside className="w-56 flex-shrink-0 bg-white border-r border-gray-200/60 flex flex-col">
         <div className="px-5 py-5 border-b border-gray-100 text-center">
-          <img src="/image/banner_white.png" alt="에브리스코어" className="h-12 mx-auto" /> 
+          <img src={bannerImg} alt="에브리스코어" className="h-12 mx-auto" /> 
         </div>
 
         <nav className="flex-1 overflow-auto py-3 px-3 scrollbar-thin">
