@@ -1,6 +1,6 @@
 {
   "name": "everyscore",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "초등학교 교내 학생 점수판",
   "main": "electron/main.js",
   "scripts": {

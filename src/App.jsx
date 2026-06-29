@@ -70,6 +70,13 @@ export default function App() {
     ? `${selectedIds.size}명에게 점수 부여`
     : '모두에게 점수 부여'
 
+  const uiScale = useStore((s) => s.uiScale)
+
+  useEffect(() => {
+    document.documentElement.style.fontSize = `${uiScale * 16}px`
+    return () => { document.documentElement.style.fontSize = '' }
+  }, [uiScale])
+
   return (
     <div className="flex h-screen overflow-hidden bg-gray-50">
       {!isFullscreen && <Sidebar />}

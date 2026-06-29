@@ -2,10 +2,13 @@ const fs = require('fs')
 const path = require('path')
 
 let dataPath
+let settingsPath
 let data = { classes: [], students: [], scoreHistory: [] }
+let settings = { fontScale: 1.0, uiScale: 1.0 }
 
 function init(userDataPath) {
   dataPath = path.join(userDataPath, 'everyscore-data.json')
+  settingsPath = path.join(userDataPath, 'everyscore-settings.json')
   try {
     if (fs.existsSync(dataPath)) {
       data = JSON.parse(fs.readFileSync(dataPath, 'utf-8'))
@@ -13,10 +16,25 @@ function init(userDataPath) {
   } catch {
     data = { classes: [], students: [], scoreHistory: [] }
   }
+  try {
+    if (fs.existsSync(settingsPath)) {
+      settings = { ...settings, ...JSON.parse(fs.readFileSync(settingsPath, 'utf-8')) }
+    }
+  } catch {}
 }
 
 function save() {
   fs.writeFileSync(dataPath, JSON.stringify(data, null, 2), 'utf-8')
+}
+
+function getSettings() {
+  return settings
+}
+
+function updateSettings(updates) {
+  settings = { ...settings, ...updates }
+  fs.writeFileSync(settingsPath, JSON.stringify(settings, null, 2), 'utf-8')
+  return settings
 }
 
 function getClasses() {
@@ -134,4 +152,6 @@ module.exports = {
   exportAll,
   importAll,
   resetAll,
+  getSettings,
+  updateSettings,
 }
