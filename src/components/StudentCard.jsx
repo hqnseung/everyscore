@@ -4,6 +4,7 @@ import { isToday } from '../utils/dateUtils'
 
 export default function StudentCard({ student, scoreView, isFullscreen, onClick, selectMode, isSelected, onToggleSelect }) {
   const scoreHistory = useStore((s) => s.scoreHistory)
+  const fontScale = useStore((s) => s.fontScale)
 
   const { totalScore, todayScore } = useMemo(() => {
     const records = scoreHistory.filter((h) => h.studentId === student.id)
@@ -14,6 +15,7 @@ export default function StudentCard({ student, scoreView, isFullscreen, onClick,
 
   const displayScore = scoreView === 'today' ? todayScore : totalScore
   const showCheckbox = selectMode || false
+  const s = fontScale
 
   const handleCheckbox = (e) => {
     e.stopPropagation()
@@ -44,27 +46,28 @@ export default function StudentCard({ student, scoreView, isFullscreen, onClick,
         )}
       </div>
 
-      <span className={`font-semibold text-slate-500 group-hover:text-brand-600 transition-colors leading-tight ${
-        isFullscreen ? 'text-[clamp(1rem,1.6vw,2.5rem)]' : 'text-[clamp(0.8rem,1.2vw,2.5rem)]'
-      }`}>
+      <span
+        className="font-semibold text-slate-500 group-hover:text-brand-600 transition-colors leading-tight"
+        style={{ fontSize: `calc(${isFullscreen ? 'clamp(1rem,1.6vw,2.5rem)' : 'clamp(0.8rem,1.2vw,2.5rem)'} * ${s})` }}
+      >
         {student.name}
       </span>
 
       <div className="self-end mt-auto flex flex-col items-end">
         {scoreView === 'total' && todayScore !== 0 && (
-          <span className={`font-bold ${
-            isFullscreen ? 'text-[clamp(0.75rem,1.1vw,1.5rem)]' : 'text-[clamp(0.6rem,0.85vw,1.25rem)]'
-          } ${
-            todayScore > 0 ? 'text-emerald-500' : 'text-red-400'
-          }`}>
+          <span
+            className={`font-bold ${todayScore > 0 ? 'text-emerald-500' : 'text-red-400'}`}
+            style={{ fontSize: `calc(${isFullscreen ? 'clamp(0.75rem,1.1vw,1.5rem)' : 'clamp(0.6rem,0.85vw,1.25rem)'} * ${s})` }}
+          >
             {todayScore > 0 ? '+' : ''}{todayScore}
           </span>
         )}
-        <span className={`font-extrabold tabular-nums tracking-tight leading-none ${
-          isFullscreen ? 'text-[clamp(1.5rem,3vw,5rem)]' : 'text-[clamp(1.25rem,2.2vw,5rem)]'
-        } ${
-          displayScore >= 0 ? 'text-slate-800' : 'text-red-500'
-        }`}>
+        <span
+          className={`font-extrabold tabular-nums tracking-tight leading-none ${
+            displayScore >= 0 ? 'text-slate-800' : 'text-red-500'
+          }`}
+          style={{ fontSize: `calc(${isFullscreen ? 'clamp(1.5rem,3vw,5rem)' : 'clamp(1.25rem,2.2vw,5rem)'} * ${s})` }}
+        >
           {displayScore}
         </span>
       </div>

@@ -6,6 +6,8 @@ const useStore = create((set, get) => ({
   scoreHistory: [],
   selectedClassId: null,
   isFullscreen: false,
+  fontScale: 1.0,
+  uiScale: 1.0,
 
   getSortMode: () => {
     const cls = get().classes.find((c) => c.id === get().selectedClassId)
@@ -18,15 +20,31 @@ const useStore = create((set, get) => ({
     set({ classes })
   },
 
+  setFontScale: async (scale) => {
+    await window.api.updateSettings({ fontScale: scale })
+    set({ fontScale: scale })
+  },
+
+  setUiScale: async (scale) => {
+    await window.api.updateSettings({ uiScale: scale })
+    set({ uiScale: scale })
+  },
+
   loadAll: async () => {
     const [classes, students, scoreHistory] = await Promise.all([
       window.api.getClasses(),
       window.api.getStudents(),
       window.api.getScoreHistory(),
     ])
+    let fontScale = get().fontScale
+    try {
+      const settings = await window.api.getSettings()
+      fontScale = settings.fontScale ?? 1.0
+      set({ uiScale: settings.uiScale ?? 1.0 })
+    } catch {}
     const prev = get().selectedClassId
     const selectedClassId = classes.find((c) => c.id === prev) ? prev : (classes.length > 0 ? classes[0].id : null)
-    set({ classes, students, scoreHistory, selectedClassId })
+    set({ classes, students, scoreHistory, selectedClassId, fontScale })
   },
 
   selectClass: (id) => set({ selectedClassId: id }),

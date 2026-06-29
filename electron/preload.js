@@ -18,6 +18,8 @@ contextBridge.exposeInMainWorld('api', {
   updateScore: (id, updates) => ipcRenderer.invoke('update-score', id, updates),
   deleteScore: (id) => ipcRenderer.invoke('delete-score', id),
 
+  getSettings: () => ipcRenderer.invoke('get-settings'),
+  updateSettings: (updates) => ipcRenderer.invoke('update-settings', updates),
   toggleFullscreen: () => ipcRenderer.invoke('toggle-fullscreen'),
   exportData: () => ipcRenderer.invoke('export-data'),
   importData: () => ipcRenderer.invoke('import-data'),

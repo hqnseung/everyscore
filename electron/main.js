@@ -81,6 +81,9 @@ app.whenReady().then(() => {
     return true
   })
 
+  ipcMain.handle('get-settings', () => store.getSettings())
+  ipcMain.handle('update-settings', (_, updates) => store.updateSettings(updates))
+
   ipcMain.handle('reset-data', () => {
     store.resetAll()
     return true
