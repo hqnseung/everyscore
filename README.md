@@ -18,16 +18,22 @@
 - **전체화면 모드** — TV 화면 송출용, ESC로 해제
 - **반응형 카드** — 창 크기·전체화면에 따라 카드와 글자 크기 자동 조절
 
+## 설치 방법
+
+[최신 버전 다운로드](https://github.com/hqnseung/everyscore/releases/latest)에서 `EveryscoreInstaller.exe`를 받아 실행하세요.
+
+> 설치 시 "Windows가 PC를 보호했습니다" 경고가 나타날 수 있습니다. **추가 정보** → **실행**을 클릭하면 정상적으로 설치됩니다.
+
 <p align="center">
   <img src="image/screenshot.png" alt="스크린샷" width="720" />
 </p>
 
-## 설치 및 실행
+## 개발자 가이드
 
 ### 개발 모드
 
 ```bash
-git clone https://github.com/your-username/everyscore.git
+git clone https://github.com/hqnseung/everyscore.git
 cd everyscore
 npm install
 npm run dev
@@ -39,9 +45,9 @@ npm run dev
 npm run build
 ```
 
-`release/` 폴더에 `EveryScore Setup x.x.x.exe`가 생성됩니다.
+`release/` 폴더에 설치 파일이 생성됩니다.
 
-## 데이터 저장 경로
+### 데이터 저장 경로
 
 ```
 Windows: %APPDATA%/everyscore/everyscore-data.json
